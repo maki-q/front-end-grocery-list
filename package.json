@@ -4,7 +4,7 @@
   "description": "",
   "main": "README.md",
   "scripts": {
-    "react-dev": "webpack -d --watch & live-server client/dist"
+    "react-dev": "webpack -d --watch & npx live-server client/dist"
   },
   "author": "Josh Hertz",
   "license": "ISC",
