@@ -9,8 +9,9 @@ class App extends React.Component {
       groceries: props.groceriesData,
       itemName: '',
       quantity: '',
-      selectedItem: 0,
-      currentlySelecting: false
+      selectedItem: null,
+      currentlySelecting: false,
+      Hello: 'oops!'
     }
 
     this.handleAddGrocery = this.handleAddGrocery.bind(this)
@@ -18,9 +19,9 @@ class App extends React.Component {
   }
 
   // componentDidMount() {
-  //   this.setState({
-  //     Hello: 'World!'
-  //   })
+  //  this.setState({
+  //   Hello: 'World!'
+  // })
   // }
 
   focusIndividualGrocery(index) {
@@ -39,14 +40,15 @@ class App extends React.Component {
 
     //If we have an item focused
     if(this.state.currentlySelecting) {
-      newState[this.state.selectedItem].name = newAddition;
+      newState[this.state.selectedItem].name = newAddition ? newAddition : newState[this.state.selectedItem].name;
       newState[this.state.selectedItem].quantity = Number(this.state.quantity);
 
       this.setState({
         groceries: newState,
         itemName: '',
         quantity: '',
-        currentlySelecting: false
+        currentlySelecting: false,
+        selectedItem: null,
       });
 
     } else {
@@ -89,14 +91,21 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.groceries)
+    console.log(this.state.Hello); // Notice how many times this calls. Does this call when you add an item? Select an item? Why?
+    if(this.state.groceries.length === 0) {
+      return (
+        <div>
+          Loading!
+        </div>
+      )
+    }
     return (
       <div>
         <img src="grocery-bags.png" />
         <h1>Grocery List</h1>
         {this.toggleSelectedItem()}
         <form>
-          <div style={{display: 'flex'}}>
+          <div className="container">
             <label> Item
               <input
                 onChange={(event) => this.setState({itemName: event.target.value})}
@@ -111,11 +120,12 @@ class App extends React.Component {
                 value={this.state.quantity}
               />
             </label>
-            <button onClick={this.handleAddGrocery}>Add Grocery</button>
+            <button onClick={this.handleAddGrocery}>Add Grocery</button> {/* What is happening to the event object? */}
           </div>
           <GroceryList
             groceries={this.state.groceries}
             focusIndividualGrocery={this.focusIndividualGrocery}
+            currentlyFocused={this.state.selectedItem}
           />
         </form>
       </div>

@@ -1,14 +1,16 @@
 import React from 'react';
 import GroceryItem from './GroceryItem.jsx';
 
-const GroceryList = (props) => (
+const GroceryList = ({groceries, focusIndividualGrocery, currentlyFocused}) => (
   <ul className="groceries">
-    {props.groceries.map(( item, index ) =>
+    {groceries.map(( item, index ) => //Why do we use map? How does React respond to it?
       <GroceryItem
         key={`grocery-item-${index}`}
         item={item}
         index={index}
-        focusIndividualGrocery={props.focusIndividualGrocery}
+        focusIndividualGrocery={focusIndividualGrocery}
+        currentlyFocused={currentlyFocused === index}
+        customProp
       />)}
   </ul>
 );

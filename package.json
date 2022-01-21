@@ -7,7 +7,7 @@
     "react-dev": "webpack --config ./webpack.config.js  -w",
     "start": "live-server client/dist"
   },
-  "author": "Josh Hertz",
+  "author": "Quinton Maki & Josh Hertz",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.13.10",

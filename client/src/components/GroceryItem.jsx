@@ -1,12 +1,13 @@
 import React from 'react';
 
-const GroceryItem = (props) => (
+const GroceryItem = ({focusIndividualGrocery, currentlyFocused, index, item}) => (
   <li>
     <span
-      onClick={() => props.focusIndividualGrocery(props.index)}
-      style={{cursor: 'pointer'}}
+      className="grocery-item"
+      onClick={() => focusIndividualGrocery(index)}
+      style={{fontWeight: currentlyFocused ? 'bold' : ''}} // Look up 'ternary operations'
     >
-      {props.item.name} - {props.item.quantity}
+      {item.name} - {item.quantity}
     </span>
   </li>
 )
