@@ -4,18 +4,24 @@
   "description": "",
   "main": "README.md",
   "scripts": {
-    "react-dev": "webpack -d --watch & npx live-server client/dist"
+    "react-dev": "webpack --config ./webpack.config.js  -w",
+    "start": "live-server client/dist"
   },
   "author": "Josh Hertz",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.23.1",
-    "babel-loader": "^6.3.2",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.23.0",
-    "webpack": "^2.2.1"
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-react": "^7.12.13",
+    "babel-loader": "^8.2.2",
+    "nodemon": "^2.0.7",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.5.0"
   },
   "dependencies": {
+    "express": "^4.17.2",
+    "live-server": "^1.2.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   }
